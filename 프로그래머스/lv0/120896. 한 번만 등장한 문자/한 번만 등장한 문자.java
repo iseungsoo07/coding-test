@@ -1,18 +1,34 @@
+import java.util.*;
+
 class Solution {
     public String solution(String s) {
         String answer = "";
-        int[] alphabet = new int[26];
-        
-        for(int i = 0; i < s.length(); i++) {
-            alphabet[s.charAt(i) - 'a']++;
-        }
-        
-        for(int i = 0; i < alphabet.length; i++) {
-            if(alphabet[i] == 1) {
-                answer += (char) (97 + i);
+        HashMap<String, Integer> map = new HashMap<>();
+
+        for (String key : s.split("")) {
+            if (map.containsKey(key)) {
+                map.put(key, map.get(key) + 1);
+            } else {
+                map.put(key, 1);
             }
         }
-        
+
+        System.out.println(map);
+
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if (map.get(entry.getKey()) == 1) {
+                answer += entry.getKey();
+            }
+        }
+
+        String[] split = answer.split("");
+        Arrays.sort(split);
+        answer = "";
+
+        for (String s1 : split) {
+            answer += s1;
+        }
+
         return answer;
     }
 }
