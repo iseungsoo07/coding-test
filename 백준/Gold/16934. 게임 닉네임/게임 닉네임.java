@@ -1,6 +1,5 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 
 public class Main {
 
@@ -49,14 +48,14 @@ public class Main {
 
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         Trie trie = new Trie();
 
-        int n = sc.nextInt();
+        int n = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < n; i++) {
-            sb.append(trie.insert(sc.next())).append("\n");
+            sb.append(trie.insert(br.readLine())).append("\n");
         }
 
         System.out.println(sb);
