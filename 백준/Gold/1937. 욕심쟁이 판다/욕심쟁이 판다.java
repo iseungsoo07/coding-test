@@ -26,7 +26,6 @@ public class Main {
 
             if (board[row][col] < board[nextRow][nextCol]) {
                 dp[row][col] = Math.max(dp[row][col], dfs(nextRow, nextCol) + 1);
-                dfs(nextRow, nextCol);
             }
         }
         return dp[row][col];
