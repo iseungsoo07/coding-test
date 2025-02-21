@@ -1,131 +1,62 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 public class Main {
 
+	public static int[] rowCount = new int[5];
+	public static int[] colCount = new int[5];
+
+	public static int count1 = 0; // '\' 대각선 카운팅
+	public static int count2 = 0; // '/' 대각선 카운팅
 	public static int bingoCnt = 0;
-	public static int[][] board = new int[5][5];
-
-	public static boolean checkRow(int[] location) {
-		int x = location[0];
-		int y = location[1];
-
-		boolean flag = true;
-
-		for (int i = 0; i < 5; i++) {
-			if (board[x][i] != 0) {
-				flag = false;
-				break;
-			}
-		}
-
-		return flag;
-	}
-
-	public static boolean checkCol(int[] location) {
-		int x = location[0];
-		int y = location[1];
-
-		boolean flag = true;
-
-		for (int i = 0; i < 5; i++) {
-			if (board[i][y] != 0) {
-				flag = false;
-				break;
-			}
-		}
-
-		return flag;
-	}
-
-	public static boolean checkLeftDiagonal() {
-		boolean flag = true;
-
-		if (board[0][0] != 0 || board[1][1] != 0 || board[2][2] != 0 || board[3][3] != 0
-			|| board[4][4] != 0) {
-			flag = false;
-		}
-
-		return flag;
-	}
-
-	public static boolean checkRightDiagonal() {
-		boolean flag = true;
-
-		if (board[0][4] != 0 || board[1][3] != 0 || board[2][2] != 0 || board[3][1] != 0
-			|| board[4][0] != 0) {
-			flag = false;
-		}
-
-		return flag;
-	}
-
-	public static int[] find(int[][] board, int num) {
-		int[] location = new int[2];
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[i].length; j++) {
-				if (board[i][j] == num) {
-					location[0] = i;
-					location[1] = j;
-				}
-			}
-		}
-
-		return location;
-	}
+	public static int callCnt = 0;
+	public static Map<Integer, int[]> map = new HashMap<>();
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
 
-		for (int i = 0; i < board.length; i++) {
-			st = new StringTokenizer(br.readLine());
-			for (int j = 0; j < board[i].length; j++) {
-				board[i][j] = Integer.parseInt(st.nextToken());
-			}
-		}
-
-		List<Integer> callList = new ArrayList<>();
 		for (int i = 0; i < 5; i++) {
 			st = new StringTokenizer(br.readLine());
 			for (int j = 0; j < 5; j++) {
-				callList.add(Integer.parseInt(st.nextToken()));
+				map.put(Integer.parseInt(st.nextToken()), new int[]{i, j});
 			}
 		}
 
-		for (int idx = 0; idx < callList.size(); idx++) {
-			int[] location = find(board, callList.get(idx));
-			board[location[0]][location[1]] = 0;
+		for (int i = 0; i < 5; i++) {
+			st = new StringTokenizer(br.readLine());
+			for (int j = 0; j < 5; j++) {
+				callCnt++;
+				int[] ints = map.get(Integer.parseInt(st.nextToken()));
 
-			if (checkRow(location)) {
-				bingoCnt++;
-			}
+				int x = ints[0];
+				int y = ints[1];
 
-			if (checkCol(location)) {
-				bingoCnt++;
-			}
-
-			if (location[0] == location[1]) {
-				if (checkLeftDiagonal()) {
+				if(++rowCount[x] == 5) {
 					bingoCnt++;
 				}
-			}
 
-			if (location[0] + location[1] == 4) {
-				if (checkRightDiagonal()) {
+				if(++colCount[y] == 5) {
 					bingoCnt++;
 				}
-			}
 
-			if (bingoCnt >= 3) {
-				System.out.println(idx + 1);
-				break;
-			}
+				if(x == y && ++count1 == 5) {
+					bingoCnt++;
+				}
 
+				if (x + y == 4 && ++count2 == 5) {
+					bingoCnt++;
+				}
+
+				if (bingoCnt >= 3) {
+					System.out.println(callCnt);
+					return;
+				}
+			}
 		}
 	}
 }
