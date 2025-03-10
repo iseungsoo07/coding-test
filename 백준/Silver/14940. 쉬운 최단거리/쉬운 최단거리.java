@@ -59,18 +59,6 @@ public class Main {
         return new int[]{x, y};
     }
 
-    public static boolean check(int x, int y, int[] dest) {
-        int destX = dest[0];
-        int destY = dest[1];
-
-        if ((x == destX + 1 && y == destY) || (x == destX - 1 && y == destY) || (x == destX
-            && y == destY + 1) || (x == destX && y == destY - 1)) {
-            return false;
-        }
-
-        return true;
-    }
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -95,10 +83,8 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
-                if (board[i][j] == 1) {
-                    if (check(i, j, dest)) {
-                        board[i][j] = -1;
-                    }
+                if (board[i][j] == 1 && !visited[i][j]) {
+                    board[i][j] = -1;
                 }
             }
         }
