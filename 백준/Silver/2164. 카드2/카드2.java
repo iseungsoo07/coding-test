@@ -3,18 +3,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.stream.IntStream;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int[] nums = IntStream.range(1, Integer.parseInt(br.readLine()) + 1).toArray();
+        int n = Integer.parseInt(br.readLine());
 
         Queue<Integer> queue = new LinkedList<>();
 
-        for (int num : nums) {
-            queue.add(num);
+        for (int i = 1; i <= n; i++) {
+            queue.offer(i);
         }
 
         while (queue.size() > 1) {
