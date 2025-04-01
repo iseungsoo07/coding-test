@@ -27,11 +27,10 @@ public class Main {
         for (int i = 0; i < m; i++) {
             String str = br.readLine();
 
-            try {
+            if (Character.isDigit(str.charAt(0))) {
                 int num = Integer.parseInt(str);
-
                 sb.append(numMap.get(num)).append("\n");
-            } catch (Exception e) {
+            } else  {
                 sb.append(nameMap.get(str)).append("\n");
             }
         }
