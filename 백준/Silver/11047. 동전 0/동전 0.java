@@ -4,32 +4,33 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
+
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int k = Integer.parseInt(st.nextToken());
 
-        int N = Integer.parseInt(st.nextToken());
-        int K = Integer.parseInt(st.nextToken());
-
-        int[] coins = new int[N];
+        int[] coins = new int[n];
         int result = 0;
 
-        for (int i = coins.length - 1; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {
             coins[i] = Integer.parseInt(br.readLine());
         }
 
-        for (int i = 0; i < coins.length; i++) {
-            while (K != 0) {
-                if (coins[i] <= K) {
-                    result += K / coins[i];
-                    K %= coins[i];
-                }
-                i++;
+        int idx = 0;
+        while (k != 0) {
+            if (coins[idx] <= k) {
+                result += k / coins[idx];
+                k %= coins[idx];
             }
+            idx++;
         }
 
         System.out.println(result);
+
+
     }
 }
