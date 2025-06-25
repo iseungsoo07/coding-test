@@ -4,15 +4,15 @@
 
 ### 성능 요약
 
-메모리: 14164 KB, 시간: 104 ms
+메모리: 11508 KB, 시간: 68 ms
 
 ### 분류
 
-조합론, 다이나믹 프로그래밍, 수학
+수학, 다이나믹 프로그래밍, 조합론
 
 ### 제출 일자
 
-2024년 12월 3일 15:42:58
+2025년 6월 25일 14:10:37
 
 ### 문제 설명
 
@@ -30,11 +30,11 @@
 
 <p>n=6일 때, 파스칼 삼각형의 6번째 행의 10은 5번째 행의 인접한 두 수(4와 6)을 더해서 구한다. </p>
 
-<p style="text-align: center;"><img alt="" src="" style="width: 300px; height: 216px;"></p>
+<p style="text-align: center;"><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Pascal%27s_triangle_5.svg/540px-Pascal%27s_triangle_5.svg.png" style="width: 300px; height: 216px;"></p>
 
 <p>같은 방식으로 n=11일 때, 다음과 같은 파스칼의 삼각형을 만들 수 있다.</p>
 
-<p style="text-align: center;"><img alt="" src="" style="width: 588px; height: 251px;"></p>
+<p style="text-align: center;"><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Pascal_triangle.svg/588px-Pascal_triangle.svg.png" style="width: 588px; height: 251px;"></p>
 
 <p>정수 n과 k가 주어졌을 때 파스칼의 삼각형에 있는 n번째 행에서 k번째 수를 출력하는 프로그램을 작성하시오.  이때, 이 수는 이항계수 C(n-1,k-1)임에 주의하시오.</p>
 
