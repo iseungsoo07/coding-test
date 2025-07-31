@@ -11,4 +11,3 @@ WHERE ub.writer_id IN (
     HAVING count(*) >= 3
 )
 ORDER BY uu.user_id desc;
-    
