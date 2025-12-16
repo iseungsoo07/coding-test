@@ -9,7 +9,7 @@ FROM (
     FROM ( 
         SELECT 
             car_id,
-            count(*) as rental_cnt
+            count(*)
         FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
         WHERE to_char(start_date, 'YYYYMMDD') >= '20220801'
         AND to_char(start_date, 'YYYYMMDD') < '20251101'
